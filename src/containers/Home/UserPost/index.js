@@ -8,13 +8,6 @@ import Typography from "@material-ui/core/Typography";
 
 
 const useStyles = makeStyles({
-    root: {
-    },
-    bullet: {
-      display: "inline-block",
-      margin: "0 2px",
-      transform: "scale(0.8)",
-    },
     title: {
       fontSize: 18,
       fontWeight:"bold"
@@ -31,10 +24,7 @@ const useStyles = makeStyles({
     },
     company : {
         fontSize: 18
-    },
-    pos: {
-      marginBottom: 12,
-    },
+    }
   });
 
 const UserPost  = ({match}) => {
@@ -122,27 +112,27 @@ const UserPost  = ({match}) => {
               color="textSecondary"
               gutterBottom
             >
-             <span> Email : <Link href="#" onClick={(e) => e.preventDefault()}>
+             <span> Email : <a href="#" onClick={(e) => e.preventDefault()}>
                 {userDetails.email}
-               </Link></span>   
+               </a></span>   
             </Typography>
             <Typography
               className={classes.title}
               color="textSecondary"
               gutterBottom
             >
-                 <span>Phone : <Link href="#" onClick={(e) => e.preventDefault()}>
+               <span>Phone : <a href="#" rel="noopener" onClick={(e) => e.preventDefault()}>
                   {userDetails.phone}
-               </Link></span>
+               </a></span>
             </Typography>
             <Typography
               className={classes.title}
               color="textSecondary"
               gutterBottom
             >
-                 <span>Website : <Link href="#" onClick={(e) => e.preventDefault()}>
+                 <span>Website : <a href="#" rel="noopener" onClick={(e) => e.preventDefault()}>
                   {userDetails.website}
-               </Link></span>
+               </a></span>
             </Typography>
             </CardContent>
             </Card>
@@ -193,7 +183,7 @@ const UserPost  = ({match}) => {
             {
                 posts && posts.map(post => {
                   return(
-                    <div className = "col-lg-3" style = {{padding:"10px"}}>
+                    <div key = {post.id} className = "col-lg-3" style = {{padding:"10px"}}>
                     <Card key={userDetails.name} style = {{paddingBottom:"30px", height:"200px", borderRadius:"10px"}}>
                          <CardContent>
                          <Typography

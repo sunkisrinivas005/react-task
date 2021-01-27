@@ -35,30 +35,39 @@ const UserInfoCard = (data ) => {
       <div className = "col-lg-12" key={data.Title} style = {{padding:"20px"}}>
         <Card key={data.id} style = {{cursor:"pointer"}} onClick = {() => history.push(`/home/user/${data.id}`) }>
           <CardContent>
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              gutterBottom
-            >
-             {data.name}
-            </Typography>
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              gutterBottom
-            >
-            {data.username}
-            </Typography>
-            <Typography
-              className={classes.email}
-              color="textSecondary"
-              gutterBottom
-              style = {{float:"right", padding:"5px"}}
-            >
-                 <Link href="#" onClick={(e) => e.preventDefault()}>
-                 {data.email}
-               </Link>
-            </Typography>
+            <div className = "col-lg-12 row">
+            <div className = "col-lg-1">
+            <div style = {{backgroundColor :"#d3d3d3", width:"100px", height:"100px", borderRadius:"100px"}}>
+
+            </div>
+           </div>
+           <div className = "col-lg-11" style = {{alignItems:"center"}}>
+           <Typography
+             className={classes.title}
+             color="textSecondary"
+             gutterBottom
+           >
+            {data.name}
+           </Typography>
+           <Typography
+             className={classes.title}
+             color="textSecondary"
+             gutterBottom
+           >
+           {data.username}
+           </Typography>
+           <Typography
+             className={classes.email}
+             color="textSecondary"
+             gutterBottom
+             style = {{float:"right", padding:"5px"}}
+           >
+                <Link href="#" onClick={(e) => e.preventDefault()}>
+                {data.email}
+              </Link>
+           </Typography>
+           </div>
+            </div>
           </CardContent>
         </Card>
       </div>

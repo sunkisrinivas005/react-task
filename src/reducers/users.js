@@ -39,7 +39,7 @@ const handleUsersFilter = (state, data) => {
   }
 
   const handleSearch = ({users}, data) => {
-   let response =  users.filter(i => ((i.name.indexOf(data) > -1) || (i.email.indexOf(data) > -1) || (i.username.indexOf(data) > -1)));
+   let response =  users.filter(i => ((i.name.toLowerCase().indexOf(data) > -1) || (i.email.toLowerCase().indexOf(data) > -1) || (i.username.toLowerCase().indexOf(data) > -1)));
     return response
   }
   
