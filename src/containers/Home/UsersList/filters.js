@@ -19,16 +19,23 @@ const UserFilters = () => {
     })
   }
   return (
-    <div style={{ padding: "10px", float:"right" }}>
+    <div className = "col-lg-12 row"  style = {{float:"right"}}>
+      <div className = "col-lg-3"></div>
+      <div className = "col-lg-3"></div>
+      <div className = "col-lg-3" style = {{marginBottom:"10px"}}>
       <TextField
+      fullWidth
         id="standard-required"
         label="Search"
         variant = "outlined"
         value = {search ? search : ""}
         onChange = {(e) => onChange(e)}
       />
+      </div>
+
+      <div className = "col-lg-3">
       <Select
-        style={{ width: "200px", marginLeft:"10px"}}
+      fullWidth
         labelId="demo-simple-select-label"
         id="demo-simple-select"
         label="Sort"
@@ -40,6 +47,7 @@ const UserFilters = () => {
         <MenuItem value={"username"}>UserName</MenuItem>
         <MenuItem value={"email"}>Email</MenuItem>
       </Select>
+      </div>
     </div>
   );
 };

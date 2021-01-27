@@ -112,7 +112,7 @@ const UserPost  = ({match}) => {
               color="textSecondary"
               gutterBottom
             >
-             <span> Email : <a href="#" onClick={(e) => e.preventDefault()}>
+             <span> Email : <a style = {{color: "hsl(193 46% 69% / 1)"}} href="#" onClick={(e) => e.preventDefault()}>
                 {userDetails.email}
                </a></span>   
             </Typography>
@@ -121,7 +121,7 @@ const UserPost  = ({match}) => {
               color="textSecondary"
               gutterBottom
             >
-               <span>Phone : <a href="#" rel="noopener" onClick={(e) => e.preventDefault()}>
+               <span>Phone : <a style = {{color: "hsl(193 46% 69% / 1)"}} href="#" rel="noopener" onClick={(e) => e.preventDefault()}>
                   {userDetails.phone}
                </a></span>
             </Typography>
@@ -130,7 +130,7 @@ const UserPost  = ({match}) => {
               color="textSecondary"
               gutterBottom
             >
-                 <span>Website : <a href="#" rel="noopener" onClick={(e) => e.preventDefault()}>
+                 <span>Website : <a style = {{color: "hsl(193 46% 69% / 1)"}} href="#" rel="noopener" onClick={(e) => e.preventDefault()}>
                   {userDetails.website}
                </a></span>
             </Typography>
