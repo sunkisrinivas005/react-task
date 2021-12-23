@@ -1,72 +1,56 @@
-import { GET_ALL_USERS , SEARCH, SORT} from "../constants/actionTypes";
+import { get } from "lodash";
+import {
+  GET_ALL_USERS,
+  LOGIN_FAILED,
+  LOGIN_SUCCESS,
+  LOGIN,
+} from "../constants/actionTypes";
 
 const INIT_STATE = {
-  users : [],
-  searchUserList : [],
-  search : "",
-  sortValue : "name",
+  loggedUser: {
+    isLoading: false,
+    user: {},
+    message: "",
+  },
+  users: [],
 };
-
-const handleUsersFilter = (state, data) => {
-    let {sortValue} = state;
-    const compare = (a, b) => {
-        if (a[sortValue] < b[sortValue] ){
-          return -1;
-        }
-        if ( a[sortValue] > b[sortValue] ){
-          return 1;
-        }
-        return 0;
-      }
-      return data.sort(compare)
-}
- 
-
-  const handleFilter = (state, data) => {
-   let {users, search, searchUserList} = state;
-   let value = data ? data.toLowerCase() : data
-   const compare = (a, b) => {
-    if (a[value] < b[value] ){
-      return -1;
-    }
-    if ( a[value] > b[value] ){
-      return 1;
-    }
-    return 0;
-  }
-    let response =  search.length ? searchUserList : users
-    return response.sort(compare);
-  }
-
-  const handleSearch = ({users}, data) => {
-   let response =  users.filter(i => ((i.name.toLowerCase().indexOf(data) > -1) || (i.email.toLowerCase().indexOf(data) > -1) || (i.username.toLowerCase().indexOf(data) > -1)));
-    return response
-  }
-  
 
 export default function Users(state = INIT_STATE, action) {
   switch (action.type) {
     case GET_ALL_USERS: {
       return {
         ...state,
-        users: handleUsersFilter(state, action.payload)
-      }
+        users: [...action.payload],
+      };
     }
-    case SEARCH: {
+    case LOGIN: {
       return {
         ...state,
-        search: action.payload,
-        searchUserList : handleSearch(state, action.payload)
-      }
+        loggedUser: { ...state.loginUser, isLoading: true },
+      };
     }
-    case SORT: {
+    case LOGIN_SUCCESS: {
       return {
         ...state,
-        sortValue: action.payload,
-        users: handleFilter(state, action.payload)
-      }
+        loggedUser: {
+          ...state.loginUser,
+          user: { ...action.payload },
+          isLoading: false,
+          message: "successful",
+        },
+      };
+    }
+    case LOGIN_FAILED: {
+      return {
+        ...state,
+        loggedUser: {
+          isLoading: false,
+          user: {},
+          message: get(action, "payload.message"),
+        },
+      };
     }
     default:
       return state;
   }
-};
+}
