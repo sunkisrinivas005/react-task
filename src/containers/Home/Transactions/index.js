@@ -44,6 +44,7 @@ const UserList = () => {
                     name={get(i, "fromAddress.name")}
                     amount={get(i, "amount")}
                     transactionType={get(i, "transactionType")}
+                    from={get(i, "from")}
                   />
                 </div>
               );

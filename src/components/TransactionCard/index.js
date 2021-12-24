@@ -1,5 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
+import { useSelector } from "react-redux";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -9,7 +10,11 @@ export default function MediaControlCard({
   transactionType,
   description,
   amount,
+  from,
 }) {
+  let { users, loggedUser } = useSelector(({ Users }) => Users);
+  const { user } = loggedUser;
+
   return (
     <Card sx={{ display: "flex" }}>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -27,7 +32,7 @@ export default function MediaControlCard({
         </CardContent>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <p style={{ margin: "20px" }}>
-            {transactionType === "DEBIT"
+            {from === user.walletId && transactionType === "DEBIT"
               ? "DEBIT"
               : transactionType === "ADD_MONEY"
               ? "MONEY ADDED"
