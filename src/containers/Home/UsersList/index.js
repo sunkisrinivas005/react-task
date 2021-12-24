@@ -92,6 +92,7 @@ const UserList = ({ history }) => {
               fullWidth
               onChange={(e) => setMoney(e.target.value)}
               name="Amount"
+              type="number"
               value={money}
               validators={["required"]}
               errorMessages={["this field is required"]}

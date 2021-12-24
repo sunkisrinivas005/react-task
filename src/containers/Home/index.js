@@ -65,7 +65,6 @@ export default function BasicTabs({ history }) {
         >
           <Tab label="Users" {...a11yProps(0)} />
           <Tab label="Transactions" {...a11yProps(1)} />
-          <Tab label="Add Money" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -73,9 +72,6 @@ export default function BasicTabs({ history }) {
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Transactions />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <AddMoney />
       </TabPanel>
     </Box>
   );
